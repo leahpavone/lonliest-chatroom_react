@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import Header from "./components/Header";
+import Chatbox from "./components/Chatbox";
+import Message from "./components/Message";
+import MessageList from "./components/MessageList";
+import ChatInput from "./components/ChatInput";
+import LonelyButton from "./components/LonelyButton";
+import { AppProvider } from "./context/AppContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <div id="main">
+        <Header />
+        <Chatbox />
+        {/* <MessageList /> */}
+        <ChatInput />
+        <LonelyButton />
+      </div>
+    </AppProvider>
   );
 }
 
