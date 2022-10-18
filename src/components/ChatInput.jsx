@@ -2,8 +2,7 @@ import { useContext } from "react";
 import AppContext from "../context/AppContext";
 
 function ChatInput() {
-  const { inputRef, message, handleSubmit, handleChange } =
-    useContext(AppContext);
+  const { inputRef, handleSubmit } = useContext(AppContext);
 
   return (
     <form onSubmit={handleSubmit}>

@@ -12,8 +12,7 @@ function App() {
     <AppProvider>
       <div id="main">
         <Header />
-        <Chatbox />
-        {/* <MessageList /> */}
+        <MessageList />
         <ChatInput />
         <LonelyButton />
       </div>

@@ -4,11 +4,10 @@ import { createContext, useState, useRef } from "react";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  // const [joke, setJoke] = useState("");
+  const [messages, setMessages] = useState([]);
   const [time, setTime] = useState("");
   const [sender, setSender] = useState("");
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
 
   const inputRef = useRef();
 
@@ -27,21 +26,25 @@ export const AppProvider = ({ children }) => {
   const fetchJoke = async () => {
     const response = await fetch(URL);
     const data = await response.json();
+
     setTime(currentTime);
     setSender("Fact:");
-    setMessage(data.value);
+    setMessage(data.value, data.id);
+    setMessages([...messages, data.value]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setTime(currentTime);
     setSender(getRandomSender());
     setMessage(inputRef.current.value);
+    setMessages([...messages, inputRef.current.value]);
     inputRef.current.value = "";
   };
 
   const deleteMessage = (id) => {
-    setMessage(messages.filter((message) => message.id !== id));
+    setMessages(messages.filter((message) => message.id !== id));
   };
 
   return (
